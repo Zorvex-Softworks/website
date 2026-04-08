@@ -170,19 +170,9 @@ export const MenuMapping = {
     },
   }),
 
-  ...SetupGameMapping("Bubble Gum Simulator Infinity", {
-    Game: "Bubble Gum Simulator Infinity [DISCONTINUED]",
-    DataURL: GetUIDataURL("bgsi"),
-  }),
-
   ...SetupGameMapping("Dead Rails", {
     Game: "Dead Rails [BETA]",
     DataURL: GetUIDataURL("deadrails"),
-  }),
-
-  ...SetupGameMapping("Grow A Garden", {
-    Game: "Grow A Garden",
-    DataURL: GetUIDataURL("gag"),
   }),
 
   ...SetupGameMapping("99 Nights In The Forest", {

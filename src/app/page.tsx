@@ -310,14 +310,6 @@ export default async function Home() {
               />
 
               <GameCard
-                title={"Grow A Garden"}
-                mappingName={"Grow A Garden - Grow A Garden"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsHV5ApBayj1tLCfgrzV73ZonhEDeNGAiRdxQ0`}
-                placeId={126884695634066}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
                 title={"Pressure"}
                 mappingName={"Pressure - Pressure"}
                 image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsH0LmZ6Layj1tLCfgrzV73ZonhEDeNGAiRdxQ`}
@@ -388,16 +380,6 @@ export default async function Home() {
                 mappingName={"Notoriety - Notoriety"}
                 image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAskzKaZ1yN8Yh20HbLkz1KupR6QJWqIBGA9FOj`}
                 placeId={21532277}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Bubble Gum Simulator Infinity"}
-                mappingName={
-                  "Bubble Gum Simulator Infinity - Bubble Gum Simulator Infinity"
-                }
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsKDiSPErg4CbGHLXhvIFxQV5pY6qirBw2Ju7n`}
-                placeId={85896571713843}
                 gamesStatusData={gamesStatusData}
               />
             </BlurFade>

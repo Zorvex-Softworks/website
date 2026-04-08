@@ -10,8 +10,6 @@ export const gamesList = [
   "Word Bomb",
   "Notoriety",
   "Dead Rails",
-  "Bubble Gum Simulator Infinity",
-  "Grow A Garden",
   "99 Nights In The Forest",
-  "The Forge",
+  "The Forge"
 ];
