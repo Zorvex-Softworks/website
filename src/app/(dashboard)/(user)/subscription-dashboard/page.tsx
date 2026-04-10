@@ -1,9 +1,8 @@
-import { auth, signOut } from '@/auth';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import MiniDashboardCard from '@/components/mini-dashboard-card';
-import DotPattern from '@/components/magicui/dot-pattern';
-import { cn } from '@/lib/utils';
 import { GetUserPurchaseHistory, GetUserSubscription } from '@/server/dashutils';
+import { UserSubscriptionOverview } from '@/components/dashboard/user-subscription-overview';
+import { UserAccountOverview } from '@/components/dashboard/user-account-overview';
 
 export default async function SubscriptionDashboard() {
   const session = await auth();
@@ -15,30 +14,26 @@ export default async function SubscriptionDashboard() {
   const subscription = await GetUserSubscription(session.user.id);
   const purchaseHistory = await GetUserPurchaseHistory(session.user.id);
 
-  async function signOutCall() {
-    "use server"
-    await signOut();
-  }
-
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <DotPattern
-        width={20}
-        height={20}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-50"
-        )}
-      /> 
-
-      <MiniDashboardCard 
-        session={session} 
-        subscription={subscription} 
-        purchaseHistory={purchaseHistory} 
-        signout={signOutCall}
-      />
+    <div className="flex flex-col gap-8 max-w-6xl mx-auto">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">Overview</h1>
+        <p className="text-muted-foreground">
+          Manage your subscription, account settings and view your purchase history.
+        </p>
+      </div>
+      
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          <UserSubscriptionOverview
+            subscription={subscription}
+            purchaseHistory={purchaseHistory}
+          />
+        </div>
+        <div className="lg:col-span-1">
+          <UserAccountOverview session={session} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,11 +1,9 @@
-import { auth, signOut } from '@/auth';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import DotPattern from '@/components/magicui/dot-pattern';
-import { cn } from '@/lib/utils';
 import BugreportCard from '@/components/submit/bugreport-card';
 import { GetUserSubscription } from '@/server/dashutils';
 
-export default async function SubscriptionDashboard() {
+export default async function BugReportPage() {
   const session = await auth();
   if (!session || !session.user || !session.user.id) {
     return redirect("/sign-in");
@@ -14,22 +12,18 @@ export default async function SubscriptionDashboard() {
   const subscription = await GetUserSubscription(session.user.id);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-        <DotPattern
-            width={20}
-            height={20}
-            cx={1}
-            cy={1}
-            cr={1}
-            className={cn(
-            "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-50"
-            )}
-        /> 
-
-        <BugreportCard 
-            session={session}
-            subscription={subscription}
-        />
+    <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">Bug Report</h1>
+        <p className="text-muted-foreground">
+          Report a bug or issue you encountered while using mspaint.
+        </p>
+      </div>
+      
+      <BugreportCard
+          session={session}
+          subscription={subscription}
+      />
     </div>
   );
 }

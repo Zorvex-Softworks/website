@@ -77,13 +77,8 @@ export default function SuggestionCard({
     if (isPostBanned || isBanned) return <InvalidSubscriptionCard text={"You are not allowed to make suggestions."} textClassName={"text-red-500"} />
 
     return (
-        <div className="w-full max-w-md mx-auto sm:mx-0 mt-6">
-            <Card className="relative rounded-lg z-10 border-transparent">
-                <CardTitle className="p-4 sm:p-6 !pb-0 w-full">
-                    Suggestion
-                    <hr className="mt-4" />
-                </CardTitle>
-
+        <div className="w-full max-w-xl">
+            <Card className="relative rounded-lg z-10 border-border/60 shadow-sm">
                 <CardContent className="flex flex-col gap-3 p-4 sm:p-6 w-full">
                     <InputFile
                         ref={titleRef}
@@ -183,9 +178,6 @@ export default function SuggestionCard({
                         router.refresh();
                     }}>Submit</Button>
 
-                    <div className="text-center text-sm text-muted-foreground">
-                        <Link href={"/subscription-dashboard"} className="transition duration-200 border-b-1 border-transparent hover:border-white hover:text-white">Go Back</Link>
-                    </div>
                 </CardContent>
             </Card>
         </div>
