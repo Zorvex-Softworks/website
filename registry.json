@@ -21,6 +21,11 @@
           "target": "components/obsidian/DynamicTab.tsx"
         },
         {
+          "path": "src/components/obsidian/ObsidianDataContext.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/ObsidianDataContext.tsx"
+        },
+        {
           "path": "src/components/obsidian/UIStateProvider.tsx",
           "type": "registry:ui",
           "target": "components/obsidian/UIStateProvider.tsx"
@@ -101,6 +106,21 @@
           "target": "components/obsidian/elements/Toggle.tsx"
         },
         {
+          "path": "src/components/obsidian/elements/UIPassthrough.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/elements/UIPassthrough.tsx"
+        },
+        {
+          "path": "src/components/obsidian/elements/Video.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/elements/Video.tsx"
+        },
+        {
+          "path": "src/components/obsidian/elements/Viewport.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/elements/Viewport.tsx"
+        },
+        {
           "path": "src/components/obsidian/elements/WarningBox.tsx",
           "type": "registry:ui",
           "target": "components/obsidian/elements/WarningBox.tsx"
@@ -119,6 +139,16 @@
           "path": "src/components/obsidian/elements/addons/KeyPicker.tsx",
           "type": "registry:ui",
           "target": "components/obsidian/elements/addons/KeyPicker.tsx"
+        },
+        {
+          "path": "src/components/obsidian/elements/toggle/Checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/elements/toggle/Checkbox.tsx"
+        },
+        {
+          "path": "src/components/obsidian/elements/toggle/Switch.tsx",
+          "type": "registry:ui",
+          "target": "components/obsidian/elements/toggle/Switch.tsx"
         }
       ]
     },
