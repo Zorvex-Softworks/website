@@ -21,7 +21,7 @@ import ColorPicker from "../elements/addons/ColorPicker";
 import ObsidianWarningBox from "../elements/WarningBox";
 
 // Parsers //
-const renderAddons = (
+export const renderAddons = (
   element: UIElement,
   addons?: Addons[],
   stateKeyPrefix?: string,
@@ -89,7 +89,6 @@ export const ElementParser: FC<{
             variant={element.properties.variant}
             stateKey={`${scope}:el:Toggle:${element.index}`}
             addonData={[element, addons, stateKeyPrefix]}
-            renderAddons={renderAddons}
           />
         );
 

@@ -11,8 +11,7 @@ export default function Toggle({
   risky,
   variant = "Switch",
   stateKey,
-  addonData,
-  renderAddons
+  addonData
 }: {
   text: string;
   checked: boolean;
@@ -20,7 +19,6 @@ export default function Toggle({
   variant?: "Switch" | "Checkbox";
   stateKey?: string;
   addonData?: [UIElement, Addons[] | undefined, string | undefined];
-  renderAddons?: (element: UIElement, addons?: Addons[], stateKeyPrefix?: string, node?: React.ReactNode) => React.ReactNode;
 }) {
   const forceCheckbox = useForceCheckbox();
   if (variant === "Checkbox" || forceCheckbox) {
@@ -41,7 +39,6 @@ export default function Toggle({
       risky={risky}
       stateKey={stateKey}
       addonData={addonData}
-      renderAddons={renderAddons}
     />
   );
 }
