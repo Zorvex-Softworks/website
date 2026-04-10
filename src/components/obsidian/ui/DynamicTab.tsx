@@ -1,24 +1,24 @@
 import { memo, useMemo, FC } from "react";
 
-import { TabData, UIElement, Addons } from "./element.types";
-import { Groupbox } from "./elements/GroupBox";
-import { TabContainer, TabLeft, TabRight } from "./elements/Tab";
-import Divider from "./elements/Divider";
-import Toggle from "./elements/Toggle";
-import Button from "./elements/Button";
-import ObsidianImage from "./elements/Image";
-import ObsidianVideo from "./elements/Video";
-import ObsidianViewport from "./elements/Viewport";
-import ObsidianUIPassthrough from "./elements/UIPassthrough";
-import Label from "./elements/Label";
-import Tabbox from "./elements/TabBox";
-import Dropdown from "./elements/Dropdown";
-import Input from "./elements/Input";
-import Slider from "./elements/Slider";
-import KeyPicker from "./elements/addons/KeyPicker";
-import AddonContainer from "./elements/addons/AddonContainer";
-import ColorPicker from "./elements/addons/ColorPicker";
-import ObsidianWarningBox from "./elements/WarningBox";
+import { TabData, UIElement, Addons } from "../element.types";
+import { Groupbox } from "../elements/GroupBox";
+import { TabContainer, TabLeft, TabRight } from "../elements/Tab";
+import Divider from "../elements/Divider";
+import Toggle from "../elements/Toggle";
+import Button from "../elements/Button";
+import ObsidianImage from "../elements/Image";
+import ObsidianVideo from "../elements/Video";
+import ObsidianViewport from "../elements/Viewport";
+import ObsidianUIPassthrough from "../elements/UIPassthrough";
+import Label from "../elements/Label";
+import Tabbox from "../elements/TabBox";
+import Dropdown from "../elements/Dropdown";
+import Input from "../elements/Input";
+import Slider from "../elements/Slider";
+import KeyPicker from "../elements/addons/KeyPicker";
+import AddonContainer from "../elements/addons/AddonContainer";
+import ColorPicker from "../elements/addons/ColorPicker";
+import ObsidianWarningBox from "../elements/WarningBox";
 
 // Parsers //
 const renderAddons = (
@@ -80,7 +80,7 @@ export const ElementParser: FC<{
   const core = (() => {
     switch (element.type) {
       case "Toggle":
-        customHandlerForAddons = element.properties.variant === "Switch";
+        customHandlerForAddons = element.properties.variant === undefined || element.properties.variant === "Switch";
         return (
           <Toggle
             text={element.text}

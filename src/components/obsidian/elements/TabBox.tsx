@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { ElementParser } from "../DynamicTab";
+import { ElementParser } from "../ui/DynamicTab";
 import { TabboxTab } from "../element.types";
 import { useCornerRadius } from "../providers/ObsidianDataProvider";
 
