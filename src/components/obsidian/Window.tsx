@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { MoveDiagonal2, Move, Search } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/ObsidianRadixTabs";
 import React, { ReactNode } from "react";
@@ -77,7 +76,7 @@ export function ObsidianWindow({
           {/* Title */}
           <div className="flex flex-row items-center justify-center w-[30%] h-full gap-[3px] border-b-[rgb(40,40,40)] border-b">
             {typeof icon === "string" ? (
-              <Image
+              <img
                 src={icon}
                 width={30}
                 height={30}

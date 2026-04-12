@@ -1,5 +1,3 @@
-"use client";
-
 import { Check, Copy } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";

@@ -1,5 +1,3 @@
-"use client";
-
 import { ChevronsUpDown } from "lucide-react";
 import { MileniumWindow } from "./milenium/MileniumWindow";
 import WordFadeIn from "./ui/word-fade-in";

@@ -1,9 +1,8 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import DotPattern from "@/components/magicui/dot-pattern";
-
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import WordFadeIn from "@/components/ui/word-fade-in";
 import GameCard from "@/components/game-card";
@@ -12,12 +11,10 @@ import CopyButton from "@/components/copy-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
 import Executor from "@/components/executor";
 import { Features } from "@/components/features";
-import DynamicShopButton from "@/components/buy-mspaint";
+import BuyMspaintButton from "@/components/buy-mspaint";
 import { UIStateProvider } from "@/components/obsidian/providers/UIStateProvider";
 
-export const dynamic = "force-static";
-
-export default async function Home() {
+export default function Home() {
   const gamesStatusData: Record<string, unknown> = {};
 
   return (
@@ -31,7 +28,7 @@ export default async function Home() {
         <NavbarContent justify="end" className="mt-4 mb-4">
           <NavbarItem>
             <Link
-              href="/key"
+              to="/key"
               className="relative text-foreground transition-colors hover:text-[#f8bfd4] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#f8bfd4] after:transition-all hover:after:w-full"
             >
               Key System
@@ -56,14 +53,14 @@ export default async function Home() {
         {/* ── Hero section ─────────────────────────────────────────── */}
         <div className="min-h-[75vh] flex flex-col items-center justify-center pt-24 pb-16 px-4">
           <BlurFade delay={0.2 + 1 * 0.05}>
-            <Link href="/key">
+            <Link to="/key">
               <div className="flex mb-4">
                 <div
                   className={cn(
                     "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
                   )}
                 >
-                  <DynamicShopButton />
+                  <BuyMspaintButton />
                 </div>
               </div>
             </Link>
@@ -100,15 +97,15 @@ export default async function Home() {
                 }
               />
 
-              <Link
+              <a
                 aria-label="Discord Server"
-                href={"https://discord.gg/lumin"}
+                href="https://discord.gg/lumin"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <ShinyButton className="px-2" aria-label="Discord Server">
                   <svg
                     className="w-5 h-5"
-                    id="svg"
                     viewBox="0 0 48 37"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +116,7 @@ export default async function Home() {
                     />
                   </svg>
                 </ShinyButton>
-              </Link>
+              </a>
             </div>
           </BlurFade>
 
@@ -133,27 +130,19 @@ export default async function Home() {
 
             <div className="flex flex-row items-center justify-center mt-5 gap-8 max-md:flex-col">
               <Executor
-                name={"Synapse Z"}
-                image={
-                  "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAstrcP1OfyiFW9CYJnxZHQ6R5wvaPXUIVc0Orp"
-                }
-                url={"#"}
+                name="Synapse Z"
+                image="https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAstrcP1OfyiFW9CYJnxZHQ6R5wvaPXUIVc0Orp"
+                url="#"
               />
-
               <Executor
-                name={"Seliware"}
-                image={
-                  "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs2M1WsFKsE4uqeKTGPFHJZhdvYVzSAOgb9aty"
-                }
-                url={"#"}
+                name="Seliware"
+                image="https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs2M1WsFKsE4uqeKTGPFHJZhdvYVzSAOgb9aty"
+                url="#"
               />
-
               <Executor
-                name={"Delta"}
-                image={
-                  "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAslPmgsgFtT6a830HkYDKeuAh9RwMGsqd24CQZ"
-                }
-                url={"#"}
+                name="Delta"
+                image="https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAslPmgsgFtT6a830HkYDKeuAh9RwMGsqd24CQZ"
+                url="#"
               />
             </div>
 
@@ -169,39 +158,39 @@ export default async function Home() {
         <UIStateProvider>
           <div
             id="games"
-          className="flex flex-col items-center mb-[10vh] text-center overflow-hidden relative"
-        >
-          <WordFadeIn
-            className="text-3xl md:text-3xl"
-            words="lumin.rest supports Grace"
-            inView
-          />
-          <BlurFade className="mb-[15px]" delay={0.2 + 1 * 0.05} inView>
-            <WordFadeIn
-              className="text-xl md:text-xl font-normal"
-              words="quality gameplay enhancements"
-              inView
-              initialDelay={0.15 * 6}
-              delay={0.35}
-            />
-          </BlurFade>
-
-          <BlurFade
-            className="flex flex-row items-center justify-center mt-5 gap-3 max-md:flex-col flex-wrap px-10"
-            delay={0.2 + 2 * 0.05}
-            inView
+            className="flex flex-col items-center mb-[10vh] text-center overflow-hidden relative"
           >
-            <GameCard
-              title={"Grace"}
-              mappingName={"Grace - Grace"}
-              image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs57LO68MxTny6kRILmGKFZcwpAtJ8zEgP1fNh`}
-              placeId={138837502355157}
-              gamesStatusData={gamesStatusData}
+            <WordFadeIn
+              className="text-3xl md:text-3xl"
+              words="lumin.rest supports Grace"
+              inView
             />
-          </BlurFade>
-        </div>
+            <BlurFade className="mb-[15px]" delay={0.2 + 1 * 0.05} inView>
+              <WordFadeIn
+                className="text-xl md:text-xl font-normal"
+                words="quality gameplay enhancements"
+                inView
+                initialDelay={0.15 * 6}
+                delay={0.35}
+              />
+            </BlurFade>
 
-        {/* ── Features / Milenium preview ───────────────────────────── */}
+            <BlurFade
+              className="flex flex-row items-center justify-center mt-5 gap-3 max-md:flex-col flex-wrap px-10"
+              delay={0.2 + 2 * 0.05}
+              inView
+            >
+              <GameCard
+                title="Grace"
+                mappingName="Grace - Grace"
+                image="https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs57LO68MxTny6kRILmGKFZcwpAtJ8zEgP1fNh"
+                placeId={138837502355157}
+                gamesStatusData={gamesStatusData}
+              />
+            </BlurFade>
+          </div>
+
+          {/* ── Features / Milenium preview ───────────────────────────── */}
           <Features />
         </UIStateProvider>
 

@@ -1,10 +1,5 @@
-"use client";
-
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 
 // ── Milenium design tokens (exact rgb values from milenium.lua) ───────────────
 export const ACCENT = "#f8bfd4";       // rgb(248,191,212)
@@ -672,10 +667,11 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
 
   return (
     <div
-      className={cn(inter.className, "relative overflow-hidden text-white select-none")}
+      className={cn("relative overflow-hidden text-white select-none")}
       style={{
         width: 700,
         height: 565,
+        fontFamily: "'Inter', sans-serif",
         background: DARK_BG,
         border: `1px solid ${STROKE_COLOR}`,
         borderRadius: 10,

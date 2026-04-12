@@ -1,11 +1,7 @@
-"use client";
-
 import { memo } from 'react';
-import dynamic from 'next/dynamic';
 import AnimatedShinyText from "@/components/magicui/animated-shiny-text";
-
-const ShoppingBagIcon = dynamic(() => import('lucide-react').then(module => module.ShoppingBagIcon), { loading: () => <></>, ssr: false });
-const ArrowRightIcon = dynamic(() => import('@radix-ui/react-icons').then(module => module.ArrowRightIcon), { loading: () => <></>, ssr: false });
+import { ShoppingBagIcon } from "lucide-react";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 const BuyMspaintButton = memo(() => {
     return <AnimatedShinyText 
@@ -19,7 +15,4 @@ const BuyMspaintButton = memo(() => {
 });
 BuyMspaintButton.displayName = 'BuyMspaintButton';
 
-export default dynamic(() => Promise.resolve(BuyMspaintButton), {
-    loading: () => <></>,
-    ssr: false,
-});
+export default BuyMspaintButton;

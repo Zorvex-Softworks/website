@@ -1,9 +1,6 @@
-"use client";
-
 import React from "react";
 import { Card, CardHeader } from "./ui/card";
 import { CircleMinus, CircleCheck, CircleAlert, BanIcon } from "lucide-react";
-import Image from "next/image";
 
 import { useUIState } from "./obsidian/providers/UIStateProvider";
 import { MenuMapping } from "@/data/features";
@@ -37,7 +34,6 @@ export default function GameCard({
 
   // handle icon //
   let statusEmoji = title in gamesStatusData ? gamesStatusData[title] : "🟢";
-  const isRemoteImage = image.startsWith("http://") || image.startsWith("https://");
   if (status == false) {
     statusEmoji = "🔴";
   } else if (status == true) {
@@ -67,12 +63,10 @@ export default function GameCard({
   return (
     <Card className="w-72 bg-zinc-900 text-white overflow-hidden">
       <div className="h-40 w-full overflow-hidden">
-        <Image
+        <img
           src={image}
           alt={title}
-          width={0} height={0} sizes={"100vw"}
           className="w-full h-full object-cover cursor-pointer"
-          unoptimized={isRemoteImage}
           loading="lazy"
           onClick={(e) => {
             e.preventDefault();

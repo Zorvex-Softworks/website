@@ -1,5 +1,3 @@
-"use client";
-
 import { BlurFade } from "@/components/magicui/blur-fade";
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Button } from "@/components/ui/button";
@@ -12,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { CheckIcon, ExternalLinkIcon } from "lucide-react";
 
 function Perk({ children }: { children: React.ReactNode }) {
@@ -24,7 +21,7 @@ function Perk({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function Page() {
+export default function Key() {
   return (
     <main className="overflow-x-hidden">
       <DotPattern
@@ -65,16 +62,17 @@ export default function Page() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Link
+                  <a
                     href="https://ads.luarmor.net/get_key?for=Lumin_Key-TwwkQkvyGEEn"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full"
                   >
                     <Button variant="outline" className="w-full cursor-pointer">
                       Get Free Key
                       <ExternalLinkIcon className="ml-2 h-4 w-4" />
                     </Button>
-                  </Link>
+                  </a>
                 </CardFooter>
               </Card>
             </BlurFade>
@@ -101,16 +99,17 @@ export default function Page() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Link
+                  <a
                     href="https://luminrest.mysellauth.com/product/lifetime"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full"
                   >
                     <Button className="w-full cursor-pointer">
                       Buy Lifetime
                       <ExternalLinkIcon className="ml-2 h-4 w-4" />
                     </Button>
-                  </Link>
+                  </a>
                 </CardFooter>
               </Card>
             </BlurFade>
