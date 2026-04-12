@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 export default function TOS() {
   const [searchParams] = useSearchParams();
   const noBg = searchParams.get("no_bg") === "true";
+  const iconSrc = `${import.meta.env.BASE_URL}icon.png`;
 
   return (
     <main
@@ -31,7 +32,7 @@ export default function TOS() {
           className="flex flex-row items-center justify-center"
         >
           <img
-            src="/icon.png"
+            src={iconSrc}
             alt="mspaint logo"
             width={35}
             height={35}

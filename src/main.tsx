@@ -10,9 +10,11 @@ import Privacy from "./pages/Privacy";
 import TOS from "./pages/TOS";
 import MileniumPreview from "./pages/MileniumPreview";
 
+const routerBaseName = import.meta.env.BASE_URL;
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBaseName}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/key" element={<Key />} />
