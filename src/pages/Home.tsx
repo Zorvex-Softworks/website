@@ -15,7 +15,7 @@ import BuyMspaintButton from "@/components/buy-mspaint";
 import { UIStateProvider } from "@/components/obsidian/providers/UIStateProvider";
 
 export default function Home() {
-  const gamesStatusData: Record<string, unknown> = {};
+  const gamesStatusData: Record<string, string> = {};
 
   return (
     <>
@@ -162,7 +162,7 @@ export default function Home() {
           >
             <WordFadeIn
               className="text-3xl md:text-3xl"
-              words="lumin.rest supports Grace"
+              words="lumin.rest supports Grace and Build A Boat For Treasure"
               inView
             />
             <BlurFade className="mb-[15px]" delay={0.2 + 1 * 0.05} inView>
@@ -185,6 +185,13 @@ export default function Home() {
                 mappingName="Grace - Grace"
                 image="https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs57LO68MxTny6kRILmGKFZcwpAtJ8zEgP1fNh"
                 placeId={138837502355157}
+                gamesStatusData={gamesStatusData}
+              />
+              <GameCard
+                title="Build A Boat For Treasure"
+                mappingName="Build A Boat For Treasure - Build A Boat For Treasure"
+                image="https://tr.rbxcdn.com/180DAY-57ac7b7b654e95f6b13697227f85d1ae/768/432/Image/Webp/noFilter"
+                placeId={537413528}
                 gamesStatusData={gamesStatusData}
               />
             </BlurFade>

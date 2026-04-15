@@ -4,7 +4,7 @@ export const gamesList = [
   "Rooms & Doors",
   // "Pressure",
   "Fisch",
-  "BABFT",
+  "Build A Boat For Treasure",
   "Grace",
   "Murder Mystery 2",
   "Word Bomb",
