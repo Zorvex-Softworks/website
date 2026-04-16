@@ -37,6 +37,13 @@ const supportedGames = [
       "https://tr.rbxcdn.com/180DAY-a7ad21f8f985d73a97aef8795f2def30/768/432/Image/Webp/noFilter",
     placeId: 139233844569220,
   },
+  {
+    title: "Murder Mystery 2",
+    mappingName: "Murder Mystery 2 - Standard",
+    image:
+      "https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter",
+    placeId: 142823291,
+  },
 ];
 
 const supportedGameHeadings = supportedGames.map(
