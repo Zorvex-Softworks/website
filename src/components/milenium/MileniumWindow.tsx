@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 // ── Milenium design tokens (exact rgb values from milenium.lua) ───────────────
-export const ACCENT = "#f8bfd4";       // rgb(248,191,212)
+export const ACCENT = "#431296";       // ##431296
 const MUTED = "#484849";               // rgb(72,72,73)
 const DARK_BG = "#0e0e10";             // rgb(14,14,16)
 const SIDEBAR_DIVIDER = "#151517";     // rgb(21,21,23)
@@ -689,8 +689,8 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
         {/* Title: height 70, font SemiBold textSize 30, paddingLeft 14 */}
         <div className="flex items-center justify-center shrink-0" style={{ height: 70 }}>
           <span style={{ color: ACCENT, fontSize: TITLE_TEXT_SIZE, fontWeight: 600, lineHeight: 1.1 }}>
-            <u>lumin</u>
-            <span style={{ color: "white" }}>.rest</span>
+            <u>Zorvex</u>
+            <span style={{ color: "white" }}>.lua</span>
           </span>
         </div>
 

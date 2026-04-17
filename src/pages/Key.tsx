@@ -41,7 +41,7 @@ export default function Key() {
             <div className="text-center mb-2">
               <h1 className="text-2xl font-bold">Key System</h1>
               <p className="text-muted-foreground text-sm mt-1">
-                Choose how you want to access lumin.rest
+                Choose how you want to access Zorvex
               </p>
             </div>
           </BlurFade>
@@ -56,57 +56,20 @@ export default function Key() {
                 </CardHeader>
                 <CardContent className="flex-1">
                   <ul className="space-y-2">
-                    <Perk>7 hour access to lumin.rest</Perk>
+                    <Perk>12 hour access to Zorvex</Perk>
                     <Perk>All supported games</Perk>
                     <Perk>No payment required</Perk>
                   </ul>
                 </CardContent>
                 <CardFooter>
                   <a
-                    href="https://ads.luarmor.net/get_key?for=Lumin_Key-TwwkQkvyGEEn"
+                    href="https://discord.gg/3fPEtASDsg"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full"
                   >
                     <Button variant="outline" className="w-full cursor-pointer">
                       Get Free Key
-                      <ExternalLinkIcon className="ml-2 h-4 w-4" />
-                    </Button>
-                  </a>
-                </CardFooter>
-              </Card>
-            </BlurFade>
-
-            {/* Lifetime Card */}
-            <BlurFade delay={0.35} inView>
-              <Card className="w-[300px] flex flex-col border-[#f8bfd4]/30">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    Lifetime
-                    <span className="text-xs font-medium bg-[#f8bfd4]/15 text-[#f8bfd4] px-2 py-0.5 rounded-full">
-                      Recommended
-                    </span>
-                  </CardTitle>
-                  <CardDescription>Permanent access, one-time purchase</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <ul className="space-y-2">
-                    <Perk>Permanent access to lumin.rest</Perk>
-                    <Perk>All supported games</Perk>
-                    <Perk>No key system required</Perk>
-                    <Perk>Priority support</Perk>
-                    <Perk>Early access to new features</Perk>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <a
-                    href="https://luminrest.mysellauth.com/product/lifetime"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button className="w-full cursor-pointer">
-                      Buy Lifetime
                       <ExternalLinkIcon className="ml-2 h-4 w-4" />
                     </Button>
                   </a>

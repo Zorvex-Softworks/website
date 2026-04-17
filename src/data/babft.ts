@@ -533,33 +533,6 @@ export const BABFT_MAIN: MileniumConfig = {
         { name: "Main", order: 1, sections: addonsLoaderSections() },
       ],
     },
-    // ── Universal ────────────────────────────────────────────────────────────
-    { name: "Universal", order: 2000, isSeparator: true, pages: [] },
-    {
-      name: "Universal",
-      icon: Globe,
-      order: 2001,
-      pages: [
-        { name: "Player", order: 1, sections: universalPlayerSections() },
-        { name: "Combat", order: 2, sections: universalCombatSections() },
-      ],
-    },
-    {
-      name: "Visuals",
-      icon: Eye,
-      order: 2010,
-      pages: [
-        { name: "Lighting",    order: 1, sections: lightingSections()    },
-        { name: "Environment", order: 2, sections: environmentSections() },
-        { name: "Effects",     order: 3, sections: effectSections()      },
-      ],
-    },
-    {
-      name: "Settings",
-      icon: Cog,
-      order: 2100,
-      pages: [{ name: "Main", order: 1, sections: settingsSections() }],
-    },
   ],
 };
 

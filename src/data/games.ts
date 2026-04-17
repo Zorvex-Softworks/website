@@ -1,16 +1,8 @@
 export const gamesList = [
-  "DOORS",
-  "3008",
-  "Rooms & Doors",
-  // "Pressure",
-  "Fisch",
-  "Build A Boat For Treasure",
-  "ZOO or OOF",
-  "Grace",
-  "Murder Mystery 2",
-  "Word Bomb",
-  "Notoriety",
-  "Dead Rails",
-  "99 Nights In The Forest",
-  "The Forge",
+  "Jailbreak",
+  "Build a boat for treasure",
+  "Drill for brainrots",
+  "Swing obby for brainrots"
 ];
+
+// I want you to make me feel like im the only girl in the world.
