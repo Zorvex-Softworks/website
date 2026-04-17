@@ -4,19 +4,23 @@ import type {
   UIEl,
 } from "@/components/milenium/MileniumWindow";
 import {
-  Blinds,
+  Anchor,
+  BookOpen,
+  Bug,
   Cog,
   Eye,
   Globe,
+  Hammer,
+  Home,
   Lightbulb,
   Package,
-  PersonStanding,
-  Play,
+  Plug2,
   RefreshCcw,
   ShieldOff,
   ShoppingCart,
   Sparkles,
   User,
+  Zap,
 } from "lucide-react";
 
 function estimateSectionSize(elements: UIEl[]): number {
@@ -49,161 +53,267 @@ function section(definition: Omit<SectionDef, "size"> & { size?: number }): Sect
   };
 }
 
-function mainGameSections(): SectionDef[] {
+// ─── Main → Main ──────────────────────────────────────────────────────────────
+
+function motorboatSections(): SectionDef[] {
   return [
     section({
-      name: "Game",
-      icon: Blinds,
+      name: "Motorboat Tuning",
+      icon: Anchor,
       column: "left",
       elements: [
-        { type: "divider", text: "Motorboat Tuning" },
-        { type: "slider", text: "Motorboat Speed", value: 0, min: 0, max: 250 },
-        { type: "textbox", text: "Turning Speed", value: "0", placeholder: "0 = default" },
-        { type: "textbox", text: "Max Thrust Force", value: "0", placeholder: "0 = default" },
-        { type: "textbox", text: "Max Turning Force", value: "0", placeholder: "0 = default" },
+        { type: "slider",  text: "Motorboat Speed",  value: 50,            min: 0, max: 250 },
+        { type: "textbox", text: "Turning Speed",     value: "45",          placeholder: "45" },
+        { type: "textbox", text: "Max Thrust Force",  value: "10000000000", placeholder: "10000000000" },
+        { type: "textbox", text: "Max Turning Force", value: "5",           placeholder: "5" },
       ],
     }),
   ];
 }
 
-function farmSections(): SectionDef[] {
+function utilitiesSections(): SectionDef[] {
   return [
     section({
-      name: "Farm",
-      icon: RefreshCcw,
-      column: "left",
+      name: "Utilities",
+      icon: Sparkles,
+      column: "right",
       elements: [
-        { type: "toggle", text: "Auto Farm", value: false },
-        { type: "toggle", text: "Auto Claim", value: false },
-        { type: "slider", text: "Farm Speed", value: 1.6, min: 0.5, max: 5, suffix: "s" },
-        { type: "divider", text: "Stats" },
-        { type: "label", text: "Gold/hr: 0 (earned: 0)" },
-        { type: "label", text: "Gold/24h: 0" },
-        { type: "label", text: "Gold Blocks/hr: 0 (earned: 0)" },
-        { type: "label", text: "Gold Blocks/24h: 0" },
-        { type: "button", text: "Reset Stats" },
+        { type: "dropdown", text: "Quest", value: "1 - Cloud", width: 180 },
+        { type: "button",   text: "Start Selected Quest" },
+        { type: "button",   text: "Stop Active Quest" },
+        { type: "button",   text: "Complete Active Quest Step" },
+        { type: "button",   text: "Teleport To Quest Objective" },
+        { type: "button",   text: "Interact Quest Objective" },
+        { type: "toggle",   text: "Auto Complete Quest Step", value: false },
+        { type: "slider",   text: "Quest Step Delay", value: 0.75, min: 0.1, max: 3 },
+        { type: "label",    text: "Selected: N/A | Active: None | Auto Step: Off" },
+        { type: "divider",  text: "Boat" },
+        { type: "button",   text: "Launch Boat" },
+        { type: "button",   text: "Quick End Run" },
+        { type: "button",   text: "Quick End Run + Claim" },
+        { type: "button",   text: "Claim Golden Chest" },
+        { type: "button",   text: "Reapply Motor Tuning" },
+        { type: "button",   text: "Clear Team Blocks" },
+        { type: "button",   text: "Teleport To Team Plot" },
+        { type: "divider",  text: "Water" },
+        { type: "button",   text: "Make Water Not Deadly" },
+        { type: "button",   text: "Disable Water Safety" },
       ],
     }),
+  ];
+}
+
+// ─── Main → Chests ────────────────────────────────────────────────────────────
+
+function chestsSections(): SectionDef[] {
+  return [
     section({
       name: "Chests",
       icon: ShoppingCart,
-      column: "right",
+      column: "left",
       elements: [
-        { type: "dropdown", text: "Chest", value: "Common", width: 160 },
-        { type: "textbox", text: "Chest Buy Amount", value: "1", placeholder: "1-1000" },
-        { type: "toggle", text: "Auto Buy Chest", value: false },
+        { type: "dropdown", text: "Chest", value: "Common Chest", width: 180 },
+        { type: "textbox",  text: "Chest Buy Amount", value: "1", placeholder: "1-1000" },
+        { type: "toggle",   text: "Auto Buy Chest",      value: false },
+        { type: "toggle",   text: "Auto Buy Best Chest", value: false },
+        { type: "button",   text: "Buy Selected Chest" },
+        { type: "button",   text: "Buy Best Affordable Chest" },
       ],
     }),
   ];
 }
 
-function questSections(): SectionDef[] {
+// ─── Main → Autofarm ──────────────────────────────────────────────────────────
+
+function autofarmSections(): SectionDef[] {
   return [
     section({
-      name: "Quests",
+      name: "Autofarm",
+      icon: RefreshCcw,
+      column: "left",
+      elements: [
+        { type: "toggle", text: "Enable Autofarm", value: false },
+        { type: "slider", text: "Teleport Delay",    value: 2, min: 0.05, max: 3,  suffix: "s" },
+        { type: "slider", text: "Time Between Runs", value: 5, min: 0,    max: 15, suffix: "s" },
+        { type: "toggle", text: "Autoclaim", value: false },
+        { type: "divider", text: "Stats" },
+        { type: "label",   text: "Gold/hr: N/A (earned: N/A)" },
+      ],
+    }),
+  ];
+}
+
+// ─── Builds → Stealing ────────────────────────────────────────────────────────
+
+function stealingSections(): SectionDef[] {
+  return [
+    section({
+      name: "Stealing",
+      icon: Hammer,
+      column: "left",
+      elements: [
+        { type: "dropdown", text: "Team", value: "My Team", width: 180 },
+        { type: "button",   text: "Copy Build" },
+        { type: "button",   text: "Stop Build" },
+        { type: "textbox",  text: "Export Name", value: "stolen_build", placeholder: "stolen_build" },
+        { type: "button",   text: "Export Team Build" },
+      ],
+    }),
+  ];
+}
+
+// ─── Builds → Files ───────────────────────────────────────────────────────────
+
+function buildFilesSections(): SectionDef[] {
+  return [
+    section({
+      name: "Files",
+      icon: Package,
+      column: "left",
+      elements: [
+        { type: "textbox", text: "File Name", value: "", placeholder: "mybuild.build" },
+        { type: "button",  text: "Refresh .build Files" },
+        { type: "button",  text: "Load Build" },
+      ],
+    }),
+  ];
+}
+
+// ─── Builds → Image Loader ────────────────────────────────────────────────────
+
+function imageLoaderSections(): SectionDef[] {
+  return [
+    section({
+      name: "Image Loader",
+      icon: Eye,
+      column: "left",
+      elements: [
+        { type: "textbox",  text: "Image URL",         value: "", placeholder: "https://..." },
+        { type: "dropdown", text: "Preferred Block",   value: "Auto", width: 180 },
+        { type: "slider",   text: "Block Size",        value: 2,  min: 1, max: 6   },
+        { type: "slider",   text: "Pixel Step",        value: 3,  min: 1, max: 8   },
+        { type: "slider",   text: "Alpha Threshold %", value: 20, min: 0, max: 100 },
+        { type: "button",   text: "Parse Image" },
+        { type: "button",   text: "Build Parsed Image" },
+      ],
+    }),
+  ];
+}
+
+// ─── Player ───────────────────────────────────────────────────────────────────
+
+function playerMovementSections(): SectionDef[] {
+  return [
+    section({
+      name: "Movement",
+      icon: Zap,
+      column: "left",
+      elements: [
+        { type: "slider",  text: "Walk Speed",     value: 16, min: 16, max: 200 },
+        { type: "toggle",  text: "Loop WalkSpeed", value: false },
+        { type: "toggle",  text: "Noclip",         value: false },
+        { type: "slider",  text: "Jump Power",     value: 50, min: 50, max: 200 },
+        { type: "button",  text: "Reset Character" },
+      ],
+    }),
+  ];
+}
+
+function playerVisualsSections(): SectionDef[] {
+  return [
+    section({
+      name: "Visuals",
       icon: Sparkles,
-      column: "left",
+      column: "right",
       elements: [
-        { type: "dropdown", text: "Quest", value: "Cloud", width: 160 },
-        { type: "toggle", text: "Quest Completer", value: false },
-        { type: "button", text: "Start Selected Quest" },
-        { type: "button", text: "Cancel Active Quest" },
-        { type: "button", text: "Complete Active Quest Step" },
+        { type: "toggle", text: "Spin Self",    value: false },
+        { type: "slider", text: "Spin Speed",   value: 180, min: 30, max: 720 },
+        { type: "toggle", text: "Rainbow Body", value: false },
+        { type: "button", text: "Party Mode" },
+        { type: "button", text: "Reset Visuals" },
       ],
     }),
   ];
 }
 
-function buildPageSections(): SectionDef[] {
+// ─── Debug ────────────────────────────────────────────────────────────────────
+
+function debugInspectorSections(): SectionDef[] {
   return [
     section({
-      name: "Copy Build",
-      icon: Package,
+      name: "Inspector",
+      icon: Bug,
       column: "left",
       elements: [
-        { type: "dropdown", text: "Team", value: "green", width: 160 },
-        { type: "button", text: "Copy Build" },
-        { type: "button", text: "Stop Build" },
-        { type: "textbox", text: "Export Name", value: "", placeholder: "my_build" },
-        { type: "button", text: "Export Team Build" },
-        { type: "button", text: "Export Own Build" },
+        { type: "label",  text: "Quest: N/A | Gold: N/A | Team: N/A | Zone: N/A | Players: 0" },
+        { type: "label",  text: "Active: None | Objective: None | Distance: N/A" },
+        { type: "label",  text: "Exists: Off | Parts: 0 | Models: 0 | Primary: None" },
+        { type: "label",  text: "Best affordable: None | Prices: N/A" },
+        { type: "label",  text: "Remotes: N/A | Missing: 0" },
+        { type: "toggle", text: "Live Refresh", value: true },
+        { type: "slider", text: "Refresh Delay", value: 1, min: 0.2, max: 5, suffix: "s" },
+        { type: "button", text: "Refresh Snapshot" },
+        { type: "button", text: "Inspect Quest Objective" },
+        { type: "button", text: "Inspect Chest Prices" },
+        { type: "button", text: "Inspect Remote Status" },
+        { type: "button", text: "Show Full Snapshot" },
       ],
     }),
+  ];
+}
+
+function debugCopySections(): SectionDef[] {
+  return [
     section({
-      name: "Builds",
+      name: "Copy Data",
       icon: Package,
       column: "right",
       elements: [
-        {
-          type: "dropdown",
-          text: "Local Build",
-          value: "cool_thing_from_i_think_poppy_playtime.json",
-          width: 190,
-        },
-        {
-          type: "dropdown",
-          text: "Public Build",
-          value: "cool_thing_from_i_think_poppy_playtime.json",
-          width: 190,
-        },
-        {
-          type: "label",
-          text: "Selected Build: cool_thing_from_i_think_poppy_playtime.json",
-        },
-        { type: "toggle", text: "Preview Build", value: false },
-        { type: "textbox", text: "Chest Gold Limit", value: "0", placeholder: "0 = unlimited" },
-        { type: "button", text: "Preview Missing Blocks" },
-        { type: "button", text: "Buy Missing Blocks" },
-        { type: "button", text: "Import Build" },
-        { type: "divider", text: "Refresh" },
-        { type: "button", text: "Refresh Local Builds" },
-        { type: "button", text: "Refresh Public Builds" },
-        { type: "button", text: "Submit Builds" },
+        { type: "button", text: "Copy Snapshot Summary" },
+        { type: "button", text: "Copy JobId" },
+        { type: "button", text: "Copy PlaceId" },
+        { type: "button", text: "Copy Team Zone" },
+        { type: "button", text: "Copy Active Quest" },
+        { type: "button", text: "Copy Objective Path" },
+        { type: "button", text: "Copy Boat Summary" },
+        { type: "button", text: "Copy Chest Summary" },
+        { type: "button", text: "Copy Remote Summary" },
+        { type: "button", text: "Copy Full Snapshot" },
       ],
     }),
   ];
 }
 
-function imagePageSections(): SectionDef[] {
+// ─── Addons ───────────────────────────────────────────────────────────────────
+
+function addonsLoaderSections(): SectionDef[] {
   return [
     section({
-      name: "Image",
-      icon: Blinds,
+      name: "Loader",
+      icon: Plug2,
       column: "left",
       elements: [
-        {
-          type: "textbox",
-          text: "Image URL",
-          value: "",
-          placeholder: "https://example.com/image.png",
-        },
-        { type: "slider", text: "Compression", value: 4, min: 0, max: 10 },
-        { type: "slider", text: "Block Size", value: 2, min: 1, max: 2 },
-        { type: "toggle", text: "Preview Image", value: false },
-        { type: "label", text: "Plastic blocks: unavailable" },
-        { type: "label", text: "Set a valid image URL to calculate blocks and cost.", muted: true },
-        { type: "button", text: "Buy All Blocks" },
-        { type: "button", text: "Import Image" },
+        { type: "label",  text: "Folder: …/addons" },
+        { type: "label",  text: "Status: Scanning addons…" },
+        { type: "label",  text: "Files: No addon files yet." },
+        { type: "button", text: "Refresh Addons" },
+        { type: "button", text: "Download Example Addon" },
+        { type: "button", text: "Copy Addon Folder" },
+      ],
+    }),
+    section({
+      name: "Guide",
+      icon: BookOpen,
+      column: "right",
+      elements: [
+        { type: "label", text: "Each file should return function(window, icons, library, notifications)." },
+        { type: "label", text: "Drop .lua or .luau files into the addons folder, then click Refresh Addons. The example file only loads after clicking Download Example Addon." },
       ],
     }),
   ];
 }
 
-function playerSections(): SectionDef[] {
-  return [
-    section({
-      name: "Player",
-      icon: PersonStanding,
-      column: "left",
-      elements: [
-        { type: "button", text: "Give All Client Tools" },
-        { type: "toggle", text: "Infinite Jetpack Fuel", value: false },
-        { type: "toggle", text: "Bypass Isolation Mode", value: false },
-        { type: "toggle", text: "Disable Water Damage", value: false },
-      ],
-    }),
-  ];
-}
+// ─── Universal ────────────────────────────────────────────────────────────────
 
 function universalPlayerSections(): SectionDef[] {
   return [
@@ -212,15 +322,15 @@ function universalPlayerSections(): SectionDef[] {
       icon: User,
       column: "left",
       elements: [
-        { type: "slider", text: "Walk Speed", value: 16, min: 0, max: 200 },
-        { type: "slider", text: "Jump Power", value: 50, min: 0, max: 500 },
-        { type: "slider", text: "Fly Speed", value: 50, min: 0, max: 200 },
+        { type: "slider", text: "Walk Speed",    value: 16,  min: 0, max: 200 },
+        { type: "slider", text: "Jump Power",    value: 50,  min: 0, max: 500 },
+        { type: "slider", text: "Fly Speed",     value: 50,  min: 0, max: 200 },
         { type: "toggle", text: "Infinite Jump", value: false },
-        { type: "toggle", text: "Anti Void", value: false },
-        { type: "toggle", text: "Anti Fling", value: false },
-        { type: "toggle", text: "Anti AFK", value: false },
-        { type: "toggle", text: "NoClip", value: false },
-        { type: "toggle", text: "Fly", value: false },
+        { type: "toggle", text: "Anti Void",     value: false },
+        { type: "toggle", text: "Anti Fling",    value: false },
+        { type: "toggle", text: "Anti AFK",      value: false },
+        { type: "toggle", text: "NoClip",        value: false },
+        { type: "toggle", text: "Fly",           value: false },
       ],
     }),
   ];
@@ -233,17 +343,19 @@ function universalCombatSections(): SectionDef[] {
       icon: ShieldOff,
       column: "left",
       elements: [
-        { type: "slider", text: "Aimbot FOV", value: 60, min: 0, max: 360 },
-        { type: "slider", text: "Aimbot Smoothness", value: 0.4, min: 0, max: 1 },
-        { type: "dropdown", text: "Aimbot Mode", value: "Always", width: 160 },
-        { type: "toggle", text: "Aimbot", value: false },
-        { type: "toggle", text: "Wallcheck", value: false },
-        { type: "keybind", text: "Aimbot Key", value: "LA" },
-        { type: "toggle", text: "Draw FOV", value: false },
+        { type: "slider",   text: "Aimbot FOV",        value: 60,  min: 0, max: 360 },
+        { type: "slider",   text: "Aimbot Smoothness",  value: 0.4, min: 0, max: 1   },
+        { type: "dropdown", text: "Aimbot Mode",        value: "Always", width: 160  },
+        { type: "toggle",   text: "Aimbot",             value: false },
+        { type: "toggle",   text: "Wallcheck",          value: false },
+        { type: "keybind",  text: "Aimbot Key",         value: "LA"  },
+        { type: "toggle",   text: "Draw FOV",           value: false },
       ],
     }),
   ];
 }
+
+// ─── Visuals ──────────────────────────────────────────────────────────────────
 
 function lightingSections(): SectionDef[] {
   return [
@@ -252,28 +364,28 @@ function lightingSections(): SectionDef[] {
       icon: Lightbulb,
       column: "left",
       elements: [
-        { type: "toggle", text: "Force", value: false },
-        { type: "divider", text: "Colors" },
-        { type: "toggle", text: "Ambient", value: false },
-        { type: "toggle", text: "Outdoor Ambient", value: false },
-        { type: "toggle", text: "Shift Bottom", value: false },
-        { type: "toggle", text: "Shift Top", value: false },
-        { type: "toggle", text: "Fog Color", value: false },
-        { type: "divider", text: "Brightness & Scaling" },
-        { type: "slider", text: "Brightness", value: 1.5, min: 0, max: 10 },
-        { type: "slider", text: "Environment Diffuse Scale", value: 0, min: 0, max: 1 },
-        { type: "slider", text: "Environment Specular Scale", value: 0, min: 0, max: 1 },
-        { type: "slider", text: "Shadow Softness", value: 0.5, min: 0, max: 1 },
-        { type: "divider", text: "Rendering" },
-        { type: "dropdown", text: "Technology", value: "ShadowMap", width: 160 },
-        { type: "toggle", text: "Global Shadows", value: true },
-        { type: "divider", text: "Time & Position" },
-        { type: "slider", text: "Clock Time", value: 14, min: 0, max: 23 },
-        { type: "slider", text: "Geographic Latitude", value: 41.7, min: 0, max: 90 },
-        { type: "slider", text: "Exposure Compensation", value: 0, min: -5, max: 5 },
-        { type: "divider", text: "Fog" },
-        { type: "slider", text: "Fog Start", value: 0, min: 0, max: 50000 },
-        { type: "slider", text: "Fog End", value: 100000, min: 0, max: 100000 },
+        { type: "toggle",   text: "Force",                     value: false },
+        { type: "divider",  text: "Colors" },
+        { type: "toggle",   text: "Ambient",                   value: false },
+        { type: "toggle",   text: "Outdoor Ambient",           value: false },
+        { type: "toggle",   text: "Shift Bottom",              value: false },
+        { type: "toggle",   text: "Shift Top",                 value: false },
+        { type: "toggle",   text: "Fog Color",                 value: false },
+        { type: "divider",  text: "Brightness & Scaling" },
+        { type: "slider",   text: "Brightness",                 value: 1.5, min: 0,  max: 10 },
+        { type: "slider",   text: "Environment Diffuse Scale",  value: 0,   min: 0,  max: 1  },
+        { type: "slider",   text: "Environment Specular Scale", value: 0,   min: 0,  max: 1  },
+        { type: "slider",   text: "Shadow Softness",            value: 0.5, min: 0,  max: 1  },
+        { type: "divider",  text: "Rendering" },
+        { type: "dropdown", text: "Technology",     value: "ShadowMap", width: 160 },
+        { type: "toggle",   text: "Global Shadows", value: true },
+        { type: "divider",  text: "Time & Position" },
+        { type: "slider",   text: "Clock Time",             value: 14,   min: 0,  max: 23 },
+        { type: "slider",   text: "Geographic Latitude",    value: 41.7, min: 0,  max: 90 },
+        { type: "slider",   text: "Exposure Compensation",  value: 0,    min: -5, max: 5  },
+        { type: "divider",  text: "Fog" },
+        { type: "slider",   text: "Fog Start", value: 0,      min: 0, max: 50000  },
+        { type: "slider",   text: "Fog End",   value: 100000, min: 0, max: 100000 },
       ],
     }),
   ];
@@ -286,22 +398,22 @@ function environmentSections(): SectionDef[] {
       icon: Package,
       column: "left",
       elements: [
-        { type: "toggle", text: "Force", value: false },
-        { type: "toggle", text: "Celestial Bodies Shown", value: true },
+        { type: "toggle",  text: "Force",                  value: false },
+        { type: "toggle",  text: "Celestial Bodies Shown", value: true  },
         { type: "divider", text: "Celestial" },
-        { type: "slider", text: "Star Count", value: 3000, min: 0, max: 5000 },
-        { type: "slider", text: "Sun Angular Size", value: 21, min: 0, max: 60 },
-        { type: "slider", text: "Moon Angular Size", value: 11, min: 0, max: 60 },
+        { type: "slider",  text: "Star Count",        value: 3000, min: 0, max: 5000 },
+        { type: "slider",  text: "Sun Angular Size",  value: 21,   min: 0, max: 60   },
+        { type: "slider",  text: "Moon Angular Size", value: 11,   min: 0, max: 60   },
         { type: "divider", text: "Textures" },
-        { type: "textbox", text: "Sun Texture", value: "rbxasset://sky/sun.jpg" },
+        { type: "textbox", text: "Sun Texture",  value: "rbxasset://sky/sun.jpg"  },
         { type: "textbox", text: "Moon Texture", value: "rbxasset://sky/moon.jpg" },
         { type: "divider", text: "Skybox Faces" },
-        { type: "textbox", text: "Back", value: "http://www.roblox.com/asset?id=58372690" },
-        { type: "textbox", text: "Down", value: "http://www.roblox.com/asset?id=58372722" },
+        { type: "textbox", text: "Back",  value: "http://www.roblox.com/asset?id=58372690" },
+        { type: "textbox", text: "Down",  value: "http://www.roblox.com/asset?id=58372722" },
         { type: "textbox", text: "Front", value: "http://www.roblox.com/asset?id=58372742" },
-        { type: "textbox", text: "Left", value: "http://www.roblox.com/asset?id=58372777" },
+        { type: "textbox", text: "Left",  value: "http://www.roblox.com/asset?id=58372777" },
         { type: "textbox", text: "Right", value: "http://www.roblox.com/asset?id=58372794" },
-        { type: "textbox", text: "Up", value: "http://www.roblox.com/asset?id=58372812" },
+        { type: "textbox", text: "Up",    value: "http://www.roblox.com/asset?id=58372812" },
       ],
     }),
   ];
@@ -314,16 +426,18 @@ function effectSections(): SectionDef[] {
       icon: Sparkles,
       column: "left",
       elements: [
-        { type: "toggle", text: "Force", value: false },
-        { type: "toggle", text: "Enabled", value: true },
-        { type: "slider", text: "Brightness", value: 0.1, min: -1, max: 1 },
-        { type: "slider", text: "Contrast", value: 0.18, min: -1, max: 1 },
-        { type: "slider", text: "Saturation", value: 0, min: -1, max: 1 },
+        { type: "toggle", text: "Force",      value: false },
+        { type: "toggle", text: "Enabled",    value: true  },
+        { type: "slider", text: "Brightness", value: 0.1,  min: -1, max: 1 },
+        { type: "slider", text: "Contrast",   value: 0.18, min: -1, max: 1 },
+        { type: "slider", text: "Saturation", value: 0,    min: -1, max: 1 },
         { type: "toggle", text: "Tint Color", value: false },
       ],
     }),
   ];
 }
+
+// ─── Settings ─────────────────────────────────────────────────────────────────
 
 function settingsSections(): SectionDef[] {
   return [
@@ -341,50 +455,85 @@ function settingsSections(): SectionDef[] {
       icon: User,
       column: "right",
       elements: [
-        { type: "keybind", text: "UI Keybind", value: "RC" },
-        { type: "toggle", text: "Menu Accent", value: false },
-        { type: "button", text: "Export Logs" },
-        { type: "button", text: "Unload Lumin UI" },
+        { type: "keybind", text: "UI Keybind",  value: "RC"  },
+        { type: "toggle",  text: "Menu Accent", value: false },
+        { type: "button",  text: "Export Logs" },
+        { type: "button",  text: "Unload Lumin UI" },
         { type: "divider", text: "Configs" },
-        { type: "button", text: "BABFT" },
+        { type: "button",  text: "BABFT" },
         { type: "textbox", text: "Config Name", value: "", placeholder: "type here..." },
-        { type: "button", text: "Save Config" },
-        { type: "button", text: "Load Config" },
-        { type: "button", text: "Delete Config" },
+        { type: "button",  text: "Save Config" },
+        { type: "button",  text: "Load Config" },
+        { type: "button",  text: "Delete Config" },
       ],
     }),
   ];
 }
 
+// ─── Export ───────────────────────────────────────────────────────────────────
+
 export const BABFT_MAIN: MileniumConfig = {
   gameName: "Build A Boat For Treasure",
   placeId: 537413528,
   tabs: [
+    // ── Game-specific ────────────────────────────────────────────────────────
     {
       name: "Main",
-      icon: Play,
+      icon: Home,
       order: 1010,
       pages: [
-        { name: "Game", order: 1, sections: mainGameSections() },
-        { name: "Farm", order: 2, sections: farmSections() },
-        { name: "Quests", order: 3, sections: questSections() },
+        {
+          name: "Main",
+          order: 1,
+          sections: [...motorboatSections(), ...utilitiesSections()],
+        },
+        { name: "Chests",   order: 2, sections: chestsSections()   },
+        { name: "Autofarm", order: 3, sections: autofarmSections() },
       ],
     },
     {
-      name: "Build [ BETA ]",
-      icon: Package,
+      name: "Builds",
+      icon: Hammer,
       order: 1015,
       pages: [
-        { name: "Builds", order: 1, sections: buildPageSections() },
-        { name: "Image", order: 2, sections: imagePageSections() },
+        { name: "Stealing",     order: 1, sections: stealingSections()    },
+        { name: "Files",        order: 2, sections: buildFilesSections()  },
+        { name: "Image Loader", order: 3, sections: imageLoaderSections() },
       ],
     },
     {
       name: "Player",
-      icon: PersonStanding,
+      icon: User,
       order: 1020,
-      pages: [{ name: "Main", order: 1, sections: playerSections() }],
+      pages: [
+        {
+          name: "Main",
+          order: 1,
+          sections: [...playerMovementSections(), ...playerVisualsSections()],
+        },
+      ],
     },
+    {
+      name: "Debug",
+      icon: Bug,
+      order: 1025,
+      pages: [
+        {
+          name: "Main",
+          order: 1,
+          sections: [...debugInspectorSections(), ...debugCopySections()],
+        },
+      ],
+    },
+    {
+      name: "Addons",
+      icon: Plug2,
+      order: 1030,
+      pages: [
+        { name: "Main", order: 1, sections: addonsLoaderSections() },
+      ],
+    },
+    // ── Universal ────────────────────────────────────────────────────────────
     { name: "Universal", order: 2000, isSeparator: true, pages: [] },
     {
       name: "Universal",
@@ -400,9 +549,9 @@ export const BABFT_MAIN: MileniumConfig = {
       icon: Eye,
       order: 2010,
       pages: [
-        { name: "Lighting", order: 1, sections: lightingSections() },
+        { name: "Lighting",    order: 1, sections: lightingSections()    },
         { name: "Environment", order: 2, sections: environmentSections() },
-        { name: "Effects", order: 3, sections: effectSections() },
+        { name: "Effects",     order: 3, sections: effectSections()      },
       ],
     },
     {
