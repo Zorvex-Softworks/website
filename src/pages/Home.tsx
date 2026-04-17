@@ -17,11 +17,11 @@ import { UIStateProvider } from "@/components/obsidian/providers/UIStateProvider
 
 const supportedGames = [
   {
-    title: "Grace",
-    mappingName: "Grace - Grace",
+    title: "Drill for brainrots",
+    mappingName: "Drill for brainrots - Drill for brainrots",
     image:
-      "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs57LO68MxTny6kRILmGKFZcwpAtJ8zEgP1fNh",
-    placeId: 138837502355157,
+      "https://q7ak3ujyhk.ufs.sh/f/pSMK2wkZelCWjp6wjix9SRfol1JawQpvDbkFYmcGxPCt5yjN",
+    placeId: 85177851006073,
   },
   {
     title: "Build A Boat For Treasure",
@@ -31,23 +31,16 @@ const supportedGames = [
     placeId: 537413528,
   },
   {
-    title: "ZOO or OOF",
-    mappingName: "ZOO or OOF - ZOO or OOF",
+    title: "Swing obby for brainrots",
+    mappingName: "Swing obby for brainrots - Swing obby for brainrots",
     image:
-      "https://tr.rbxcdn.com/180DAY-a7ad21f8f985d73a97aef8795f2def30/768/432/Image/Webp/noFilter",
+      "https://q7ak3ujyhk.ufs.sh/f/pSMK2wkZelCWPaYeey1bx7CcLS5wQ9dltDWyFaqgeXHJT8Zo",
     placeId: 139233844569220,
-  },
-  {
-    title: "Murder Mystery 2",
-    mappingName: "Murder Mystery 2 - Standard",
-    image:
-      "https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter",
-    placeId: 142823291,
   },
 ];
 
 const supportedGameHeadings = supportedGames.map(
-  ({ title }) => `lumin.rest supports ${title}`,
+  ({ title }) => `Zorvex supports ${title}`,
 );
 
 export default function Home() {
@@ -57,15 +50,15 @@ export default function Home() {
     <>
       <Navbar className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <NavbarBrand>
-          <span className="font-bold text-[#f8bfd4]">lumin</span>
-          <span className="font-bold">.rest</span>
+          <span className="font-bold text-[#431296]">Zorvex</span>
+          <span className="font-bold">.lua</span>
         </NavbarBrand>
 
         <NavbarContent justify="end" className="mt-4 mb-4">
           <NavbarItem>
             <Link
               to="/key"
-              className="relative text-foreground transition-colors hover:text-[#f8bfd4] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#f8bfd4] after:transition-all hover:after:w-full"
+              className="relative text-foreground transition-colors hover:text-[#431296] after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#431296] after:transition-all hover:after:w-full"
             >
               Key System
             </Link>
@@ -104,15 +97,15 @@ export default function Home() {
 
           <BlurFade delay={0.2 + 2 * 0.05}>
             <h1 className="text-6xl font-bold text-center mb-3">
-              <span className="text-[#f8bfd4]">lumin</span>
-              <span>.rest</span>
+              <span className="text-[#431296]">Zorvex</span>
+              <span>.lua</span>
             </h1>
           </BlurFade>
 
           <BlurFade delay={0.2 + 3 * 0.05}>
             <p className="text-2xl text-center text-muted-foreground mb-6">
               The best{" "}
-              <span className="font-bold text-white">Grace</span>{" "}
+              <span className="font-bold text-white">swing obby for brainrots</span>{" "}
               script
             </p>
           </BlurFade>
@@ -121,21 +114,21 @@ export default function Home() {
             <div className="flex flex-row items-center justify-center gap-2 flex-wrap max-sm:flex-col max-sm:w-[90vw]">
               <Input
                 type="text"
-                className="overflow-hidden text-ellipsis min-w-[300px] max-sm:min-w-0 max-sm:w-full border-[#f8bfd4]/20 focus-visible:ring-[#f8bfd4]/50"
+                className="overflow-hidden text-ellipsis min-w-[300px] max-sm:min-w-0 max-sm:w-full border-[#431296]/20 focus-visible:ring-[#431296]/50"
                 readOnly
                 value={
-                  'loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/1e8ed553780d0658105a816d5a17b100.lua"))()'
+                  'loadstring(game:HttpGet("https://www.syntaxical.space/Zorvex", true))()'
                 }
               />
               <CopyButton
                 text={
-                  'loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/1e8ed553780d0658105a816d5a17b100.lua"))()'
+                  'loadstring(game:HttpGet("https://www.syntaxical.space/Zorvex", true))()'
                 }
               />
 
               <a
                 aria-label="Discord Server"
-                href="https://discord.gg/jG9KuUnbXS"
+                href="https://discord.gg/uq5XQHFxcA"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -240,10 +233,10 @@ export default function Home() {
           <div className="px-2 py-2 flex flex-row items-center gap-2">
             <div>
               <p className="text-xs text-left font-bold">
-                <span className="text-[#f8bfd4]">lumin</span>.rest
+                <span className="text-[#431296]">Zorvex</span>.lua
               </p>
               <p className="text-muted-foreground text-xs">
-                Site made by transicle
+                Site made by transicle, remade for zorvex by syntaxical
               </p>
             </div>
           </div>

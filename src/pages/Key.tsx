@@ -15,7 +15,7 @@ import { CheckIcon, ExternalLinkIcon } from "lucide-react";
 function Perk({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2 text-sm">
-      <CheckIcon className="h-4 w-4 mt-0.5 shrink-0 text-[#f8bfd4]" />
+      <CheckIcon className="h-4 w-4 mt-0.5 shrink-0 text-[#431296]" />
       <span>{children}</span>
     </li>
   );

@@ -157,7 +157,7 @@ export function Features() {
     >
       <WordFadeIn
         className="text-3xl md:text-3xl mb-5"
-        words={`lumin.rest features:`}
+        words={`Zorvex.lua features:`}
         inView
       />
 

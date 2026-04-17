@@ -68,6 +68,7 @@ export interface TextboxEl {
 export interface LabelEl {
   type: "label";
   text: string;
+  value?: string;
   muted?: boolean;
 }
 export interface ColorEl {
@@ -414,16 +415,60 @@ function DividerRenderer({ el }: { el: DividerEl }) {
 }
 
 function LabelRenderer({ el }: { el: LabelEl }) {
+  // If a value is provided, render as a key: value row
+  if (el.value !== undefined) {
+    return (
+      <div
+        className="flex flex-row items-center justify-between"
+        style={{ minHeight: 16 }}
+      >
+        <span
+          style={{
+            ...singleLineTextStyle,
+            fontSize: FIELD_LABEL_TEXT_SIZE,
+            color: el.muted ? MUTED : EL_TEXT,
+            fontWeight: FIELD_TEXT_WEIGHT,
+            lineHeight: 1.1,
+            paddingLeft: 5,
+            paddingRight: 8,
+            flex: "1 1 auto",
+            textAlign: "left",
+          }}
+        >
+          {el.text}
+        </span>
+        <span
+          style={{
+            ...singleLineTextStyle,
+            fontSize: FIELD_VALUE_TEXT_SIZE,
+            color: MUTED,
+            fontWeight: FIELD_TEXT_WEIGHT,
+            lineHeight: 1.1,
+            paddingRight: 5,
+            flexShrink: 0,
+            maxWidth: "55%",
+            textAlign: "right",
+          }}
+        >
+          {el.value}
+        </span>
+      </div>
+    );
+  }
+
+  // Plain label (no value)
   return (
-    <div style={{
-      color: el.muted ? MUTED : EL_TEXT,
-      fontSize: el.muted ? 11 : 12,
-      fontWeight: FIELD_TEXT_WEIGHT,
-      lineHeight: 1.1,
-      padding: "0 5px",
-      whiteSpace: "pre",
-      overflow: "hidden",
-    }}>
+    <div
+      style={{
+        color: el.muted ? MUTED : EL_TEXT,
+        fontSize: el.muted ? 11 : 12,
+        fontWeight: FIELD_TEXT_WEIGHT,
+        lineHeight: 1.1,
+        padding: "0 5px",
+        whiteSpace: "pre",
+        overflow: "hidden",
+      }}
+    >
       {el.text}
     </div>
   );
@@ -703,7 +748,6 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
             let logicalIdx = 0;
             return sortedItems.map((item, i) => {
               if (item.isSeparator) {
-                // Lua: font SemiBold, textSize 16, color rgb(72,72,73), padding 5px L/R
                 return (
                   <div
                     key={`sep-${i}`}
@@ -744,7 +788,6 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
                     transition: "background-color 0.25s ease, color 0.25s ease",
                   }}
                 >
-                  {/* Icon 22×22 */}
                   {item.icon
                     ? (
                       <span style={iconTransitionStyle}>
@@ -798,7 +841,6 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
                 }}
               >
                 {page.name}
-                {/* Active accent pill: bottom+4, left 10 right 10, height 6, corner 999 */}
                 {isActive && (
                   <div
                     className="absolute"
@@ -849,12 +891,10 @@ export function MileniumWindow({ tabs, gameName, placeId }: MileniumConfig) {
           padding: "0 10px",
         }}
       >
-        {/* Game name: font SemiBold textSize 14 rgb(72,72,73), position (10, center-1) */}
         <span style={{ color: MUTED, fontSize: INFO_TEXT_SIZE, fontWeight: 600, lineHeight: 1.1, marginTop: -1 }}>{gameName}</span>
-        {/* Right: placeId in grey, name+suffix in accent, position (-10, center-1) right aligned */}
         <span style={{ fontSize: INFO_TEXT_SIZE, fontWeight: 600, lineHeight: 1.1, marginTop: -1 }}>
           <span style={{ color: MUTED }}>{placeId}&nbsp;&nbsp;</span>
-          <span style={{ color: ACCENT }}>lumin.rest</span>
+          <span style={{ color: ACCENT }}>Zorvex.lua</span>
         </span>
       </div>
       <style jsx global>{`
