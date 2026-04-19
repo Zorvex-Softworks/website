@@ -196,63 +196,6 @@ function autofarmSections(): SectionDef[] {
   ];
 }
 
-// ─── Builds → Stealing ────────────────────────────────────────────────────────
-
-function stealingSections(): SectionDef[] {
-  return [
-    section({
-      name: "Stealing",
-      icon: Hammer,
-      column: "left",
-      elements: [
-        { type: "dropdown", text: "Team", value: "My Team", width: 180 },
-        { type: "button",   text: "Copy Build" },
-        { type: "button",   text: "Stop Build" },
-        { type: "textbox",  text: "Export Name", value: "stolen_build", placeholder: "stolen_build" },
-        { type: "button",   text: "Export Team Build" },
-      ],
-    }),
-  ];
-}
-
-// ─── Builds → Files ───────────────────────────────────────────────────────────
-
-function buildFilesSections(): SectionDef[] {
-  return [
-    section({
-      name: "Files",
-      icon: Package,
-      column: "left",
-      elements: [
-        { type: "textbox", text: "File Name", value: "", placeholder: "mybuild.build" },
-        { type: "button",  text: "Refresh .build Files" },
-        { type: "button",  text: "Load Build" },
-      ],
-    }),
-  ];
-}
-
-// ─── Builds → Image Loader ────────────────────────────────────────────────────
-
-function imageLoaderSections(): SectionDef[] {
-  return [
-    section({
-      name: "Image Loader",
-      icon: Eye,
-      column: "left",
-      elements: [
-        { type: "textbox",  text: "Image URL",         value: "", placeholder: "https://..." },
-        { type: "dropdown", text: "Preferred Block",   value: "Auto", width: 180 },
-        { type: "slider",   text: "Block Size",        value: 2,  min: 1, max: 6   },
-        { type: "slider",   text: "Pixel Step",        value: 3,  min: 1, max: 8   },
-        { type: "slider",   text: "Alpha Threshold %", value: 20, min: 0, max: 100 },
-        { type: "button",   text: "Parse Image" },
-        { type: "button",   text: "Build Parsed Image" },
-      ],
-    }),
-  ];
-}
-
 // ─── Player ───────────────────────────────────────────────────────────────────
 
 function playerMovementSections(): SectionDef[] {
@@ -466,16 +409,6 @@ export const drillfor_main: MileniumConfig = {
           order: 4,
           sections: autofarmSections(),
         },
-      ],
-    },
-    {
-      name: "Builds",
-      icon: Hammer,
-      order: 1015,
-      pages: [
-        { name: "Stealing",     order: 1, sections: stealingSections()    },
-        { name: "Files",        order: 2, sections: buildFilesSections()  },
-        { name: "Image Loader", order: 3, sections: imageLoaderSections() },
       ],
     },
     {
