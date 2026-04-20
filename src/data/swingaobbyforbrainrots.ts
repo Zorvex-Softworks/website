@@ -256,39 +256,6 @@ function automationSections(): SectionDef[] {
   ];
 }
 
-// ─── Debug ────────────────────────────────────────────────────────────────────
-
-function debugSections(): SectionDef[] {
-  return [
-    section({
-      name: "Inspector",
-      icon: Bug,
-      column: "left",
-      elements: [
-        { type: "label",  text: "Debug Status", value: "Loading..." },
-        { type: "button", text: "Refresh Debug Snapshot" },
-        { type: "button", text: "Scan Prompt Counts" },
-        { type: "button", text: "Copy Debug Snapshot" },
-      ],
-    }),
-    section({
-      name: "Copy Data",
-      icon: Copy,
-      column: "right",
-      elements: [
-        { type: "button", text: "Copy JobId" },
-        { type: "button", text: "Copy PlaceId" },
-        { type: "button", text: "Copy Plot + Cash" },
-        { type: "button", text: "Copy Swing Settings" },
-        { type: "button", text: "Copy Active Count" },
-        { type: "button", text: "Copy Prompt Stats" },
-        { type: "button", text: "Copy Nearest Brainrot" },
-        { type: "button", text: "Copy Nearest ID" },
-      ],
-    }),
-  ];
-}
-
 // ─── Misc ─────────────────────────────────────────────────────────────────────
 
 function miscSections(): SectionDef[] {
@@ -502,18 +469,6 @@ export const swingobby_main: MileniumConfig = {
           name: "Main",
           order: 1,
           sections: automationSections(),
-        },
-      ],
-    },
-    {
-      name: "Debug",
-      icon: Bug,
-      order: 1035,
-      pages: [
-        {
-          name: "Main",
-          order: 1,
-          sections: debugSections(),
         },
       ],
     },

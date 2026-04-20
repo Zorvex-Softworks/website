@@ -275,53 +275,6 @@ function trollingTargetSections(): SectionDef[] {
   ];
 }
 
-// ─── Debug ────────────────────────────────────────────────────────────────────
-
-function debugInspectorSections(): SectionDef[] {
-  return [
-    section({
-      name: "Inspector",
-      icon: Bug,
-      column: "left",
-      elements: [
-        { type: "label",  text: "Snapshot",      value: "Press refresh to load." },
-        { type: "label",  text: "Base And Drill", value: "Press inspect to load." },
-        { type: "label",  text: "Attributes",     value: "Press inspect to load." },
-        { type: "button", text: "Refresh Snapshot" },
-        { type: "button", text: "Show Full Snapshot" },
-        { type: "button", text: "Inspect Base Setup" },
-        { type: "button", text: "Check Wall Targets" },
-      ],
-    }),
-  ];
-}
-
-function debugCopySections(): SectionDef[] {
-  return [
-    section({
-      name: "Copy Data",
-      icon: Copy,
-      column: "right",
-      elements: [
-        { type: "button", text: "Copy Status Summary" },
-        { type: "button", text: "Copy JobId" },
-        { type: "button", text: "Copy PlaceId" },
-        { type: "button", text: "Copy Player Name" },
-        { type: "button", text: "Copy Current World" },
-        { type: "button", text: "Copy Next World" },
-        { type: "button", text: "Copy Next Wall" },
-        { type: "button", text: "Copy Current Plot" },
-        { type: "button", text: "Copy Base Spawn" },
-        { type: "button", text: "Copy Collect Target" },
-        { type: "button", text: "Copy Current Drill" },
-        { type: "button", text: "Copy Owned Drills" },
-        { type: "button", text: "Copy Attribute Summary" },
-        { type: "button", text: "Copy Debug Snapshot" },
-      ],
-    }),
-  ];
-}
-
 // ─── Addons ───────────────────────────────────────────────────────────────────
 
 function addonsLoaderSections(): SectionDef[] {
@@ -432,18 +385,6 @@ export const drillfor_main: MileniumConfig = {
           name: "Main",
           order: 1,
           sections: trollingTargetSections(),
-        },
-      ],
-    },
-    {
-      name: "Debug",
-      icon: Bug,
-      order: 1030,
-      pages: [
-        {
-          name: "Main",
-          order: 1,
-          sections: [...debugInspectorSections(), ...debugCopySections()],
         },
       ],
     },

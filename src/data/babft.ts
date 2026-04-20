@@ -236,54 +236,6 @@ function playerVisualsSections(): SectionDef[] {
   ];
 }
 
-// ─── Debug ────────────────────────────────────────────────────────────────────
-
-function debugInspectorSections(): SectionDef[] {
-  return [
-    section({
-      name: "Inspector",
-      icon: Bug,
-      column: "left",
-      elements: [
-        { type: "label",  text: "Quest: N/A | Gold: N/A | Team: N/A | Zone: N/A | Players: 0" },
-        { type: "label",  text: "Active: None | Objective: None | Distance: N/A" },
-        { type: "label",  text: "Exists: Off | Parts: 0 | Models: 0 | Primary: None" },
-        { type: "label",  text: "Best affordable: None | Prices: N/A" },
-        { type: "label",  text: "Remotes: N/A | Missing: 0" },
-        { type: "toggle", text: "Live Refresh", value: true },
-        { type: "slider", text: "Refresh Delay", value: 1, min: 0.2, max: 5, suffix: "s" },
-        { type: "button", text: "Refresh Snapshot" },
-        { type: "button", text: "Inspect Quest Objective" },
-        { type: "button", text: "Inspect Chest Prices" },
-        { type: "button", text: "Inspect Remote Status" },
-        { type: "button", text: "Show Full Snapshot" },
-      ],
-    }),
-  ];
-}
-
-function debugCopySections(): SectionDef[] {
-  return [
-    section({
-      name: "Copy Data",
-      icon: Package,
-      column: "right",
-      elements: [
-        { type: "button", text: "Copy Snapshot Summary" },
-        { type: "button", text: "Copy JobId" },
-        { type: "button", text: "Copy PlaceId" },
-        { type: "button", text: "Copy Team Zone" },
-        { type: "button", text: "Copy Active Quest" },
-        { type: "button", text: "Copy Objective Path" },
-        { type: "button", text: "Copy Boat Summary" },
-        { type: "button", text: "Copy Chest Summary" },
-        { type: "button", text: "Copy Remote Summary" },
-        { type: "button", text: "Copy Full Snapshot" },
-      ],
-    }),
-  ];
-}
-
 // ─── Addons ───────────────────────────────────────────────────────────────────
 
 function addonsLoaderSections(): SectionDef[] {
@@ -510,18 +462,6 @@ export const BABFT_MAIN: MileniumConfig = {
           name: "Main",
           order: 1,
           sections: [...playerMovementSections(), ...playerVisualsSections()],
-        },
-      ],
-    },
-    {
-      name: "Debug",
-      icon: Bug,
-      order: 1025,
-      pages: [
-        {
-          name: "Main",
-          order: 1,
-          sections: [...debugInspectorSections(), ...debugCopySections()],
         },
       ],
     },
