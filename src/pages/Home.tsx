@@ -227,27 +227,6 @@ export default function Home() {
         </UIStateProvider>
 
         {/* ── Footer ──────────────────────────────────────────────── */}
-        <Separator className="mt-[2.5rem] w-screen" />
-
-        <div className="px-10 py-6 w-screen flex flex-row justify-between items-center max-md:justify-center max-md:flex-col">
-          <div className="px-2 py-2 flex flex-row items-center gap-2">
-            <div>
-              <p className="text-xs text-left font-bold">
-                <span className="text-[#431296]">Zorvex</span>.lua
-              </p>
-              <p className="text-muted-foreground text-xs">
-                Site made by transicle, remade for zorvex by syntaxical
-              </p>
-            </div>
-          </div>
-          <p className="text-muted-foreground text-xs px-2 py-2 text-right max-md:text-center max-md:mt-5">
-            This software is not affiliated, associated, authorized, endorsed
-            by, or
-            <br />
-            in any way officially connected with Roblox or any of its
-            subsidiaries or its affiliates.
-          </p>
-        </div>
       </main>
     </>
   );
