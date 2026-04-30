@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function HomePage() {
-  return React.createElement(React.Fragment, null, "hi");
+export default function Zorvex() {
+  return <h1>hi</h1>;
 }
