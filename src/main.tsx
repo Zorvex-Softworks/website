@@ -7,17 +7,18 @@ import "./app/globals.css";
 import Home from "./pages/Home";
 import Key from "./pages/Key";
 import MileniumPreview from "./pages/MileniumPreview";
-
-const routerBaseName = import.meta.env.BASE_URL;
+import Zorvex from "./pages/zorvex";
 
 function App() {
   return (
-    <BrowserRouter basename={routerBaseName}>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/key" element={<Key />} />
         <Route path="/milenium-preview" element={<MileniumPreview />} />
+        <Route path="/zorvex" element={<Zorvex />} />
       </Routes>
+
       <Toaster richColors />
     </BrowserRouter>
   );
